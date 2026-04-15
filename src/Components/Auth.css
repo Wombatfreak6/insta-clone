@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.auth-box {
+  width: 350px;
+  background: white;
+  border: 1px solid #dbdbdb;
+  padding: 40px;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Billabong', cursive;
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #737373;
+  margin-bottom: 20px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.auth-form input {
+  padding: 10px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  font-size: 12px;
+  background: #fafafa;
+}
+
+.primary-btn {
+  background-color: #0095f6;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-btn:hover {
+  background-color: #1877f2;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #dbdbdb;
+}
+
+.divider p {
+  margin: 0 10px;
+  font-size: 12px;
+  color: #737373;
+}
+
+.fb-btn {
+  background: none;
+  border: none;
+  color: #385185;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.forgot {
+  font-size: 12px;
+  color: #00376b;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.terms {
+  font-size: 11px;
+  color: #737373;
+  margin-top: 15px;
+}
+
+.auth-switch {
+  width: 350px;
+  background: white;
+  border: 1px solid #dbdbdb;
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.auth-switch span {
+  color: #0095f6;
+  font-weight: bold;
+  cursor: pointer;
+}
