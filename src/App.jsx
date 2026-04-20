@@ -1,24 +1,34 @@
-import React,{useState} from 'react'
-import Login from './Components/Login.jsx'
-import Signup from './Components/Signup.jsx'
-import Dashboard from './Components/Dashboard.jsx';
+// App.jsx
+// Root component.
+// Controls authentication state and decides whether to show the Auth page
+// or the main dashboard (which includes the Sidebar).
 
-const App = () => {
-  const[toggleAuth,setToggleAuth]=useState(false);
-  const[isAuth,setIsAuth]=useState(false);
-  function handleToggleauth(){
-    setToggleAuth(!toggleAuth)
+import { useState } from "react";
+import Auth from "./Components/Auth";
+import Sidebar from "./Components/Sidebar";
+import Dashboard from "./Components/Dashboard";
+
+export default function App() {
+  // isAuthenticated drives the entire app's view state.
+  // No router needed for this single-page demo.
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  function handleAuthSuccess() {
+    setIsAuthenticated(true);
   }
-  if (!isAuth){
-    return (
-      <div>{toggleAuth?<Login handleToggleauth={handleToggleauth} setIsAuth={setIsAuth}/>:<Signup handleToggleauth={handleToggleauth}/>}</div>
-    )
+
+  // Before login: show only the Auth page, Sidebar must not be visible.
+  if (!isAuthenticated) {
+    return <Auth onAuthSuccess={handleAuthSuccess} />;
   }
-  return(
-    <div>
-      <Dashboard/>
+
+  // After login: full layout with Sidebar + main content area.
+  return (
+    <div style={{ display: "flex", minHeight: "100vh", background: "#000" }}>
+      <Sidebar />
+      <main style={{ flex: 1, marginLeft: "245px", padding: "20px", color: "#f5f5f5" }}>
+        <Dashboard />
+      </main>
     </div>
-  )
+  );
 }
-
-export default App

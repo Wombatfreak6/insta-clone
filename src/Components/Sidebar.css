@@ -1,0 +1,154 @@
+/* Sidebar.css
+ * Styles for Sidebar, NavItem, Logo, and BottomMenu components.
+ * Uses CSS custom properties for easy theming.
+ * Layout: fixed left column, full viewport height, dark theme.
+ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --sidebar-bg: #000000;
+  --sidebar-width: 245px;
+  --sidebar-width-collapsed: 72px;
+  --sidebar-border: #262626;
+
+  --text-primary: #f5f5f5;
+  --text-muted: #a8a8a8;
+
+  --item-hover-bg: #1a1a1a;
+  --item-active-bg: #262626;
+  --item-radius: 8px;
+
+  --transition-speed: 0.2s;
+  --icon-size: 26px;
+}
+
+/* ---------- Sidebar shell ---------- */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: var(--sidebar-width);
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid var(--sidebar-border);
+  display: flex;
+  flex-direction: column;
+  padding: 12px 12px 20px;
+  z-index: 100;
+  transition: width var(--transition-speed) ease;
+  overflow: hidden;
+}
+
+/* Collapsed: icon-only mode (medium screens) */
+.sidebar--collapsed {
+  width: var(--sidebar-width-collapsed);
+}
+
+/* ---------- Logo ---------- */
+.sidebar-logo {
+  padding: 20px 12px 28px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  font-family: "Billabong", "Dancing Script", cursive;
+  font-size: 26px;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.logo-icon {
+  font-size: 32px;
+  color: var(--text-primary);
+}
+
+/* ---------- Nav list ---------- */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+/* ---------- Nav item ---------- */
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  border-radius: var(--item-radius);
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color var(--transition-speed) ease,
+              transform var(--transition-speed) ease;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background-color: var(--item-hover-bg);
+  transform: scale(1.02);
+}
+
+.nav-item--active {
+  background-color: var(--item-active-bg);
+  font-weight: 700;
+}
+
+.nav-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: var(--icon-size);
+}
+
+.nav-item__label {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text-primary);
+  transition: opacity var(--transition-speed) ease;
+}
+
+/* ---------- Bottom section ---------- */
+.sidebar-bottom {
+  border-top: 1px solid var(--sidebar-border);
+  padding-top: 12px;
+}
+
+/* ---------- Responsive breakpoints ---------- */
+
+/* Medium screens (≤ 1263px): collapse to icons only */
+@media (max-width: 1263px) {
+  .sidebar {
+    width: var(--sidebar-width-collapsed);
+  }
+
+  .logo-text,
+  .nav-item__label {
+    display: none;
+  }
+
+  .sidebar-logo {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .nav-item {
+    justify-content: center;
+    padding: 12px 0;
+  }
+}
+
+/* Mobile (≤ 767px): hide sidebar entirely */
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+}
