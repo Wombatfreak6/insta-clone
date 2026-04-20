@@ -1,7 +1,3 @@
-// Dashboard.jsx
-// Placeholder for the main content area that sits next to the Sidebar.
-// Replace this with your feed, reels, explore, etc. in the next phases.
-
 export default function Dashboard() {
   return (
     <div style={{ padding: "40px 20px", color: "#f5f5f5" }}>
