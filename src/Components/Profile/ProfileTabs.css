@@ -1,0 +1,65 @@
+/* ProfileTabs.css
+ * Horizontal tab navigation bar.
+ * Full-width border-top baseline; active tab gets a white top indicator.
+ */
+
+.profile-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #262626;
+  gap: 0;
+  margin-bottom: 0;
+}
+
+/* ---------- Individual tab ---------- */
+.profile-tabs__tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 24px;
+  background: none;
+  border: none;
+  border-top: 2px solid transparent;
+  /* Overlap the section border-top */
+  margin-top: -1px;
+  color: #a8a8a8;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.profile-tabs__tab:hover {
+  color: #f5f5f5;
+}
+
+/* Active state: white top border + white text */
+.profile-tabs__tab--active {
+  border-top-color: #f5f5f5;
+  color: #f5f5f5;
+}
+
+/* ---------- Icon ---------- */
+.profile-tabs__icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* ---------- Mobile: hide labels, icon-only ---------- */
+@media (max-width: 735px) {
+  .profile-tabs__tab {
+    padding: 12px 16px;
+    gap: 0;
+  }
+
+  .profile-tabs__label {
+    display: none;
+  }
+
+  .profile-tabs__icon {
+    font-size: 22px;
+  }
+}

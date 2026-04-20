@@ -1,33 +1,22 @@
-// App.jsx
-// Root component.
-// Controls authentication state and decides whether to show the Auth page
-// or the main dashboard (which includes the Sidebar).
-
 import { useState } from "react";
 import Auth from "./Components/Auth";
 import Sidebar from "./Components/Sidebar";
 import Dashboard from "./Components/Dashboard";
+import ProfilePage from "./Components/Profile/ProfilePage";
 
 export default function App() {
-  // isAuthenticated drives the entire app's view state.
-  // No router needed for this single-page demo.
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authed, setAuthed] = useState(() => !!localStorage.getItem("Account"));
+  const [activePage, setActivePage] = useState("home");
 
-  function handleAuthSuccess() {
-    setIsAuthenticated(true);
+  if (!authed) {
+    return <Auth onAuthSuccess={() => setAuthed(true)} />;
   }
 
-  // Before login: show only the Auth page, Sidebar must not be visible.
-  if (!isAuthenticated) {
-    return <Auth onAuthSuccess={handleAuthSuccess} />;
-  }
-
-  // After login: full layout with Sidebar + main content area.
   return (
     <div style={{ display: "flex", minHeight: "100vh", background: "#000" }}>
-      <Sidebar />
-      <main style={{ flex: 1, marginLeft: "245px", padding: "20px", color: "#f5f5f5" }}>
-        <Dashboard />
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
+      <main style={{ flex: 1, marginLeft: "245px", minHeight: "100vh", color: "#f5f5f5" }}>
+        {activePage === "profile" ? <ProfilePage /> : <Dashboard />}
       </main>
     </div>
   );
