@@ -3,7 +3,7 @@ import "./App.css";
 
 import Auth from "./Components/Auth";
 import Sidebar from "./Components/Sidebar";
-import Dashboard from "./Components/Dashboard";
+import HomePage from "./Components/Home/HomePage";
 import ProfilePage from "./Components/Profile/ProfilePage";
 import SearchPage from "./Components/Search/SearchPage";
 
@@ -16,6 +16,10 @@ export default function App() {
   }
 
   return (
+    <div style={{ display: "flex", minHeight: "100vh", background: "#000" }}>
+      <Sidebar activePage={activePage} onNavigate={setActivePage} />
+      <main style={{ flex: 1, marginLeft: "245px", minHeight: "100vh", color: "#f5f5f5" }}>
+        {activePage === "profile" ? <ProfilePage /> : <HomePage />}
     <div className="app-container">
 
       <div
