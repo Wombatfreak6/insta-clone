@@ -1,7 +1,3 @@
-// NavItem.jsx
-// A single navigation item row inside the sidebar.
-// Shows an icon, and optionally a label (hidden when sidebar is collapsed).
-// Applies an "active" highlight when the current route matches.
 
 import "./Sidebar.css";
 

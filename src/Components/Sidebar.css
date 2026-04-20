@@ -1,8 +1,3 @@
-/* Sidebar.css
- * Styles for Sidebar, NavItem, Logo, and BottomMenu components.
- * Uses CSS custom properties for easy theming.
- * Layout: fixed left column, full viewport height, dark theme.
- */
 
 /* ---------- Design tokens ---------- */
 :root {

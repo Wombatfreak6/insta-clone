@@ -1,6 +1,3 @@
-// BottomMenu.jsx
-// Renders the "More" button that sits at the very bottom of the sidebar.
-// Separated so it can later grow into a dropdown/popover without cluttering Sidebar.jsx.
 
 import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import "./Sidebar.css";
