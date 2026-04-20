@@ -1,0 +1,50 @@
+/* ProfileStats.css
+ * Horizontal row of post / follower / following counts.
+ * On mobile the row spans full width with even spacing.
+ */
+
+.profile-stats {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.profile-stats__count {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f5f5f5;
+  line-height: 1.2;
+}
+
+.profile-stats__label {
+  font-size: 14px;
+  color: #f5f5f5;
+  font-weight: 400;
+}
+
+/* ---------- Mobile: full-width bar, justify evenly ---------- */
+@media (max-width: 736px) {
+  .profile-stats {
+    justify-content: space-around;
+    border-top: 1px solid #262626;
+    border-bottom: 1px solid #262626;
+    padding: 12px 0;
+    gap: 0;
+    width: 100%;
+  }
+
+  .profile-stats__item {
+    flex: 1;
+    text-align: center;
+  }
+}

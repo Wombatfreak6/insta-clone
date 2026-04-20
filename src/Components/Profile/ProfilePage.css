@@ -1,0 +1,54 @@
+/* ProfilePage.css
+ * Layout and container styles for the Profile page.
+ * Sits to the right of the fixed sidebar (245px wide on desktop).
+ * All sub-component styles live in their own files.
+ */
+
+/* ---------- Page wrapper ---------- */
+.profile-page {
+  min-height: 100vh;
+  background-color: #000;
+  color: #f5f5f5;
+  /* account for sidebar width on desktop */
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Inner container: constrains max width and centers content */
+.profile-page__inner {
+  width: 100%;
+  max-width: 935px;
+  padding: 30px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Content area below tabs */
+.profile-page__content {
+  margin-top: 0;
+}
+
+/* ---------- Divider utility ---------- */
+.profile-divider {
+  border: none;
+  border-top: 1px solid #262626;
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+
+/* Medium screens: sidebar collapses to 72px */
+@media (max-width: 1263px) {
+  .profile-page {
+    padding-left: 0;
+  }
+}
+
+/* Mobile: no sidebar */
+@media (max-width: 767px) {
+  .profile-page__inner {
+    padding: 16px 12px 80px;
+  }
+}

@@ -1,0 +1,147 @@
+/* ProfileHeader.css
+ * Styles for the profile header section:
+ * avatar, username row, bio, and responsive stats visibility.
+ */
+
+/* ---------- Header shell ---------- */
+.profile-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 20px 0 24px;
+}
+
+/* ---------- Avatar ---------- */
+.profile-header__avatar-wrap {
+  flex-shrink: 0;
+}
+
+.profile-header__avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #333;
+}
+
+/* Initials fallback circle */
+.profile-header__avatar--fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+  color: #fff;
+  font-size: 52px;
+  font-weight: 700;
+  user-select: none;
+}
+
+/* ---------- Info column ---------- */
+.profile-header__info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+  min-width: 200px;
+}
+
+/* ---------- Username row ---------- */
+.profile-header__username-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.profile-header__username {
+  font-size: 20px;
+  font-weight: 400;
+  color: #f5f5f5;
+  letter-spacing: 0.2px;
+}
+
+.profile-header__settings-btn {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #f5f5f5;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 4px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.profile-header__settings-btn:hover {
+  color: #aaa;
+  background-color: #1a1a1a;
+}
+
+/* ---------- Stats desktop (inside info column) ---------- */
+.profile-header__stats-desktop {
+  display: block;
+}
+
+/* ---------- Display name ---------- */
+.profile-header__display-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f5f5f5;
+  margin: 0;
+}
+
+/* ---------- Bio ---------- */
+.profile-header__bio {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profile-header__bio-line {
+  font-size: 14px;
+  color: #f5f5f5;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---------- Stats mobile (below avatar row) ---------- */
+.profile-header__stats-mobile {
+  display: none;
+  width: 100%;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 736px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .profile-header__avatar {
+    width: 77px;
+    height: 77px;
+    font-size: 28px;
+  }
+
+  /* On mobile, show stats below avatar row in full-width bar */
+  .profile-header__stats-desktop {
+    display: none;
+  }
+
+  .profile-header__stats-mobile {
+    display: block;
+  }
+
+  /* Lay avatar and username side by side on mobile */
+  .profile-header {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .profile-header__info {
+    gap: 8px;
+  }
+}

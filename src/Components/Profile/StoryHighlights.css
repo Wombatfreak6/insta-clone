@@ -1,0 +1,29 @@
+/* StoryHighlights.css
+ * Horizontal scrollable row of highlight circles.
+ */
+
+.story-highlights {
+  padding-bottom: 24px;
+  overflow: hidden;
+}
+
+.story-highlights__track {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  /* Hide scrollbar but keep scroll functionality */
+  scrollbar-width: none;
+}
+
+.story-highlights__track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 736px) {
+  .story-highlights__track {
+    gap: 16px;
+  }
+}
