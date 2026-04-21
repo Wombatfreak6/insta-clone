@@ -1,7 +1,7 @@
 .home-page {
   display: flex;
   justify-content: center;
-  padding: 32px 16px 80px;
+  padding: 36px 16px 80px;
   min-height: 100vh;
   background-color: #000;
 }
@@ -17,10 +17,11 @@
 
 /* ---------- Post card ---------- */
 .feed-post {
-  background-color: #000;
-  border: 1px solid #262626;
-  border-radius: 4px;
-  overflow: hidden;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #262626;
+  border-radius: 0;
+  padding-bottom: 16px;
 }
 
 /* ---------- Post header ---------- */
@@ -211,5 +212,11 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 470px;
+  max-width: 630px;
+}
+
+@media (min-width: 1160px) {
+  .home-center {
+    margin-right: 320px; /* Shifts the feed left exactly like official IG right sidebar offset */
+  }
 }
