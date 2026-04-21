@@ -14,7 +14,6 @@
   border: none;
   padding: 16px 0;
   width: 100%;
-  max-width: 630px;
   overflow-x: auto;
   scrollbar-width: none;
   box-sizing: border-box;
@@ -32,6 +31,39 @@
   cursor: pointer;
   flex-shrink: 0;
 }
+
+/* --- YOUR STORY PLUS ICON --- */
+.story-avatar-wrapper {
+  position: relative;
+  width: 66px;
+  height: 66px;
+}
+
+.plus-icon {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background-color: #000; /* Black Background */
+  color: #fff;            /* White Plus Sign */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #000; /* Subtle border to keep it clean */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* Ensure the user's avatar in "Your Story" takes full space */
+.your-story .story-avatar {
+  width: 66px;
+  height: 66px;
+  border: none;
+}
+/* ---------------------------- */
 
 .story-ring {
   width: 66px;
@@ -87,14 +119,6 @@
   line-height: 1;
 }
 
-.scroll-btn.left {
-  left: -14px;
-}
-
-.scroll-btn.right {
-  right: -14px;
-}
-
-.scroll-btn:hover {
-  background: #f0f0f0;
-}
+.scroll-btn.left { left: -14px; }
+.scroll-btn.right { right: -14px; }
+.scroll-btn:hover { background: #f0f0f0; }

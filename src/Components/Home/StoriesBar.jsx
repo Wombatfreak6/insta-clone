@@ -14,6 +14,7 @@ const storiesData = [
 
 export default function StoriesBar() {
   const scrollRef = useRef(null);
+  const currentUserAvatar = "https://i.pravatar.cc/150?img=12"; 
 
   const scroll = (dir) => {
     scrollRef.current.scrollBy({ left: dir === "left" ? -200 : 200, behavior: "smooth" });
@@ -22,7 +23,19 @@ export default function StoriesBar() {
   return (
     <div className="stories-wrapper">
       <button className="scroll-btn left" onClick={() => scroll("left")}>&#8249;</button>
+      
       <div className="stories-bar" ref={scrollRef}>
+        
+        {/* Your Story Item */}
+        <div className="story-item your-story">
+          <div className="story-avatar-wrapper">
+            <img src={currentUserAvatar} alt="Your Story" className="story-avatar" />
+            <div className="plus-icon">+</div>
+          </div>
+          <span className="story-username">Your Story</span>
+        </div>
+
+        {/* Other Stories */}
         {storiesData.map((story) => (
           <div className="story-item" key={story.id}>
             <div className={`story-ring ${story.seen ? "seen" : ""}`}>
@@ -32,6 +45,7 @@ export default function StoriesBar() {
           </div>
         ))}
       </div>
+
       <button className="scroll-btn right" onClick={() => scroll("right")}>&#8250;</button>
     </div>
   );
