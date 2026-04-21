@@ -8,9 +8,11 @@ export default function ProfileHeader({ profile }) {
   return (
     <header className="profile-header">
       <div className="profile-header__avatar-wrap">
-        <div className="profile-header__avatar profile-header__avatar--fallback">
-          {displayName.charAt(0).toUpperCase()}
-        </div>
+        <img 
+          src="https://i.pravatar.cc/150?u=a042581f4e29026704d" 
+          alt={username} 
+          className="profile-header__avatar" 
+        />
       </div>
 
       <div className="profile-header__info">

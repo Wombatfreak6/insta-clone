@@ -1,10 +1,10 @@
 
 
 export const MOCK_NOTES = [
-  { id: 'me', name: "Your note", avatar: "https://i.pravatar.cc/150?u=me", note: "Ready for..." },
-  { id: 1, name: "Siddhant", avatar: "https://i.pravatar.cc/150?u=siddhant", note: "It's You (A... Ali Gatie" },
-  { id: 2, name: "LAKSHYA 🦋", avatar: "https://i.pravatar.cc/150?u=lakshya", note: "and it s... Forrest Nolan" },
-  { id: 3, name: "_SHIN♡CH", avatar: "https://i.pravatar.cc/150?u=shin", note: "Koi Naa (S... Tanishk Bag..." },
+  { id: 'me', name: "Your note", avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d", note: "What's new?" },
+  { id: 1, name: "Chenna Mahith", avatar: "https://i.pravatar.cc/150?u=siddhant", note: "\"never look so desperate to be friends wi..." },
+  { id: 2, name: "tusk act 4", avatar: "https://i.pravatar.cc/150?u=lakshya", note: "Ngl pe puchlo main fat fat reply kardun..." },
+  { id: 3, name: "Swastik Ar", avatar: "https://i.pravatar.cc/150?u=shin", note: "Never trust someone who has..." },
   { id: 4, name: "Rahul", avatar: "https://i.pravatar.cc/150?u=rahul", note: "Coding vibes" },
 ];
 

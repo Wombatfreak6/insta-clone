@@ -49,14 +49,7 @@ export default function MessagesPage() {
 
         <section className="notes-container">
           <div className="notes-scroll">
-            <div className="note-item">
-              <div className="note-avatar-wrapper plus-note">
-                <img src="https://i.pravatar.cc/150?u=me" alt="Your note" className="note-avatar" />
-                <div className="plus-icon">+</div>
-              </div>
-              <span className="note-name">Your note</span>
-            </div>
-            {MOCK_NOTES.filter(n => n.id !== 'me').map((note) => (
+            {MOCK_NOTES.map((note) => (
               <div key={note.id} className="note-item">
                 <div className="note-avatar-wrapper">
                   <img src={note.avatar} alt={note.name} className="note-avatar" />
