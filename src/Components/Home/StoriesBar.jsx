@@ -35,7 +35,7 @@ export default function StoriesBar() {
           <span className="story-username">Your Story</span>
         </div>
 
-        {/* Other Stories */}
+        {/* Map through other stories */}
         {storiesData.map((story) => (
           <div className="story-item" key={story.id}>
             <div className={`story-ring ${story.seen ? "seen" : ""}`}>
