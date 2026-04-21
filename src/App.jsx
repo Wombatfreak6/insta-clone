@@ -6,7 +6,7 @@ import Sidebar from "./Components/Sidebar";
 import HomePage from "./Components/Home/HomePage";
 import ProfilePage from "./Components/Profile/ProfilePage";
 import SearchPage from "./Components/Search/SearchPage";
-import Dashboard from "./Components/Dashboard";
+import MessagesPage from "./Components/Messages/MessagesPage";
 
 export default function App() {
   const [authed, setAuthed] = useState(() => !!localStorage.getItem("Account"));
@@ -16,18 +16,22 @@ export default function App() {
     return <Auth onAuthSuccess={() => setAuthed(true)} />;
   }
 
+  const isMessagesPage = activePage === "messages";
+
   return (
-    <div className="app-container">
+    <div className={`app-container ${isMessagesPage ? "layout--messages" : ""}`}>
       <div
         className="sidebar-wrapper"
         style={{
-          transform:
-            activePage === "search"
-              ? "translateX(-100%)"
-              : "translateX(0)"
+          width: isMessagesPage ? "var(--sidebar-width-collapsed)" : "var(--sidebar-width)",
+          transform: activePage === "search" ? "translateX(-100%)" : "translateX(0)"
         }}
       >
-        <Sidebar activePage={activePage} onNavigate={setActivePage} />
+        <Sidebar 
+          activePage={activePage} 
+          onNavigate={setActivePage} 
+          isCollapsed={isMessagesPage} 
+        />
       </div>
 
       <SearchPage
@@ -36,7 +40,13 @@ export default function App() {
       />
 
       <main className="main-content">
-        {activePage === "profile" ? <ProfilePage /> : <HomePage />}
+        {activePage === "profile" ? (
+          <ProfilePage />
+        ) : activePage === "messages" ? (
+          <MessagesPage />
+        ) : (
+          <HomePage />
+        )}
       </main>
     </div>
   );

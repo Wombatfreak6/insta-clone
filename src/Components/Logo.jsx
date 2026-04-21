@@ -2,11 +2,11 @@
 import { RiInstagramLine } from "react-icons/ri";
 import "./Sidebar.css";
 
-export default function Logo({ collapsed }) {
+export default function Logo({ isCollapsed }) {
   return (
     <div className="sidebar-logo">
-      {collapsed ? (
-        <RiInstagramLine className="logo-icon" />
+      {isCollapsed ? (
+        <RiInstagramLine className="logo-icon" title="Instagram" />
       ) : (
         <span className="logo-text">Instagram</span>
       )}
