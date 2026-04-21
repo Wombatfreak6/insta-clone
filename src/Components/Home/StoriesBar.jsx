@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import "./StoriesBar.css";
 
 const storiesData = [
@@ -12,16 +13,26 @@ const storiesData = [
 ];
 
 export default function StoriesBar() {
+  const scrollRef = useRef(null);
+
+  const scroll = (dir) => {
+    scrollRef.current.scrollBy({ left: dir === "left" ? -200 : 200, behavior: "smooth" });
+  };
+
   return (
-    <div className="stories-bar">
-      {storiesData.map((story) => (
-        <div className="story-item" key={story.id}>
-          <div className={`story-ring ${story.seen ? "seen" : ""}`}>
-            <img src={story.avatar} alt={story.username} className="story-avatar" />
+    <div className="stories-wrapper">
+      <button className="scroll-btn left" onClick={() => scroll("left")}>&#8249;</button>
+      <div className="stories-bar" ref={scrollRef}>
+        {storiesData.map((story) => (
+          <div className="story-item" key={story.id}>
+            <div className={`story-ring ${story.seen ? "seen" : ""}`}>
+              <img src={story.avatar} alt={story.username} className="story-avatar" />
+            </div>
+            <span className="story-username">{story.username}</span>
           </div>
-          <span className="story-username">{story.username}</span>
-        </div>
-      ))}
+        ))}
+      </div>
+      <button className="scroll-btn right" onClick={() => scroll("right")}>&#8250;</button>
     </div>
   );
 }
