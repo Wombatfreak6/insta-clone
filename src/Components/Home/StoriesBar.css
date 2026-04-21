@@ -10,11 +10,11 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  background-color: #000;
-  border: 1px solid #262626;
-  border-radius: 4px;
-  padding: 16px 20px;
+  background-color: transparent;
+  border: none;
+  padding: 16px 0;
   width: 100%;
+  max-width: 630px;
   overflow-x: auto;
   scrollbar-width: none;
   box-sizing: border-box;
