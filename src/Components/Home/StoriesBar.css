@@ -11,7 +11,6 @@
   align-items: center;
   gap: 16px;
   background-color: transparent;
-  border: none;
   padding: 16px 0;
   width: 100%;
   overflow-x: auto;
@@ -23,6 +22,7 @@
   display: none;
 }
 
+/* --- BASE STORY ITEM --- */
 .story-item {
   display: flex;
   flex-direction: column;
@@ -30,9 +30,46 @@
   gap: 6px;
   cursor: pointer;
   flex-shrink: 0;
+  /* Smooth transition for the "lift" effect */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
 }
 
-/* --- YOUR STORY PLUS ICON --- */
+.story-ring, .story-avatar, .story-username {
+  transition: all 0.3s ease;
+}
+
+/* --- PREMIUM HOVER STATES --- */
+
+/* 1. Lift the item up slightly */
+.story-item:hover {
+  transform: translateY(-6px);
+}
+
+/* 2. Enhance the avatar/ring */
+.story-item:hover .story-avatar {
+  filter: brightness(1.1);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.story-item:hover .story-ring {
+  transform: scale(1.05);
+}
+
+/* 3. Highlight the Username */
+.story-item:hover .story-username {
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* 4. THE SPOTLIGHT EFFECT: Dim other stories when one is hovered */
+.stories-bar:hover .story-item:not(:hover) {
+  opacity: 0.5;
+  filter: grayscale(0.3);
+}
+
+/* --- EXISTING UI STYLES --- */
+
 .story-avatar-wrapper {
   position: relative;
   width: 66px;
@@ -43,12 +80,12 @@
   position: absolute;
   bottom: 0px;
   right: 0px;
-  background-color: #000; /* Black Background */
-  color: #fff;            /* White Plus Sign */
+  background-color: #0095f6;
+  color: #fff;
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: 2px solid #000; /* Subtle border to keep it clean */
+  border: 2px solid #000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,14 +93,6 @@
   font-weight: bold;
   z-index: 2;
 }
-
-/* Ensure the user's avatar in "Your Story" takes full space */
-.your-story .story-avatar {
-  width: 66px;
-  height: 66px;
-  border: none;
-}
-/* ---------------------------- */
 
 .story-ring {
   width: 66px;
@@ -87,6 +116,12 @@
   border: 3px solid #000;
   object-fit: cover;
   display: block;
+}
+
+.your-story .story-avatar {
+  width: 66px;
+  height: 66px;
+  border: none;
 }
 
 .story-username {
@@ -116,9 +151,7 @@
   z-index: 10;
   color: #000;
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-  line-height: 1;
 }
 
 .scroll-btn.left { left: -14px; }
 .scroll-btn.right { right: -14px; }
-.scroll-btn:hover { background: #f0f0f0; }
