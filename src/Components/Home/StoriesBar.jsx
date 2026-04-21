@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import "./StoriesBar.css";
 
 const storiesData = [
@@ -14,28 +14,52 @@ const storiesData = [
 
 export default function StoriesBar() {
   const scrollRef = useRef(null);
-  const currentUserAvatar = "https://i.pravatar.cc/150?img=12"; 
+  const [showLeft, setShowLeft] = useState(false);
+  const [showRight, setShowRight] = useState(true);
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setShowLeft(scrollLeft > 0);
+      setShowRight(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+
+  useEffect(() => {
+    const bar = scrollRef.current;
+    if (bar) {
+      checkScroll();
+      bar.addEventListener("scroll", checkScroll);
+      return () => bar.removeEventListener("scroll", checkScroll);
+    }
+  }, []);
 
   const scroll = (dir) => {
-    scrollRef.current.scrollBy({ left: dir === "left" ? -200 : 200, behavior: "smooth" });
+    scrollRef.current.scrollBy({ 
+      left: dir === "left" ? -240 : 240, 
+      behavior: "smooth" 
+    });
   };
 
   return (
     <div className="stories-wrapper">
-      <button className="scroll-btn left" onClick={() => scroll("left")}>&#8249;</button>
+      {/* Buttons stay in DOM, CSS handles the 'Peeking' animation */}
+      <button 
+        className={`scroll-btn left ${showLeft ? "is-visible" : ""}`} 
+        onClick={() => scroll("left")}
+      >
+        &#8249;
+      </button>
       
       <div className="stories-bar" ref={scrollRef}>
-        
-        {/* Your Story Item */}
         <div className="story-item your-story">
           <div className="story-avatar-wrapper">
-            <img src={currentUserAvatar} alt="Your Story" className="story-avatar" />
+            <img src="https://i.pravatar.cc/150?img=12" alt="Your Story" className="story-avatar" />
             <div className="plus-icon">+</div>
           </div>
           <span className="story-username">Your Story</span>
         </div>
 
-        {/* Map through other stories */}
         {storiesData.map((story) => (
           <div className="story-item" key={story.id}>
             <div className={`story-ring ${story.seen ? "seen" : ""}`}>
@@ -46,7 +70,12 @@ export default function StoriesBar() {
         ))}
       </div>
 
-      <button className="scroll-btn right" onClick={() => scroll("right")}>&#8250;</button>
+      <button 
+        className={`scroll-btn right ${showRight ? "is-visible" : ""}`} 
+        onClick={() => scroll("right")}
+      >
+        &#8250;
+      </button>
     </div>
   );
 }
