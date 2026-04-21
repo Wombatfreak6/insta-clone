@@ -10,7 +10,6 @@
   flex-direction: row;
   align-items: center;
   gap: 16px;
-  background-color: transparent;
   padding: 16px 0;
   width: 100%;
   overflow-x: auto;
@@ -22,7 +21,7 @@
   display: none;
 }
 
-/* --- BASE STORY ITEM --- */
+/* --- PREMIUM STORY HOVER (Spotlight) --- */
 .story-item {
   display: flex;
   flex-direction: column;
@@ -30,110 +29,19 @@
   gap: 6px;
   cursor: pointer;
   flex-shrink: 0;
-  /* Smooth transition for the "lift" effect */
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
 }
 
-.story-ring, .story-avatar, .story-username {
-  transition: all 0.3s ease;
-}
-
-/* --- PREMIUM HOVER STATES --- */
-
-/* 1. Lift the item up slightly */
 .story-item:hover {
   transform: translateY(-6px);
 }
 
-/* 2. Enhance the avatar/ring */
-.story-item:hover .story-avatar {
-  filter: brightness(1.1);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
-}
-
-.story-item:hover .story-ring {
-  transform: scale(1.05);
-}
-
-/* 3. Highlight the Username */
-.story-item:hover .story-username {
-  color: #ffffff;
-  font-weight: 600;
-  letter-spacing: 0.3px;
-}
-
-/* 4. THE SPOTLIGHT EFFECT: Dim other stories when one is hovered */
 .stories-bar:hover .story-item:not(:hover) {
   opacity: 0.5;
   filter: grayscale(0.3);
 }
 
-/* --- EXISTING UI STYLES --- */
-
-.story-avatar-wrapper {
-  position: relative;
-  width: 66px;
-  height: 66px;
-}
-
-.plus-icon {
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-  background-color: #0095f6;
-  color: #fff;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  z-index: 2;
-}
-
-.story-ring {
-  width: 66px;
-  height: 66px;
-  border-radius: 50%;
-  padding: 2px;
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.story-ring.seen {
-  background: #333;
-}
-
-.story-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 3px solid #000;
-  object-fit: cover;
-  display: block;
-}
-
-.your-story .story-avatar {
-  width: 66px;
-  height: 66px;
-  border: none;
-}
-
-.story-username {
-  color: #e0e0e0;
-  font-size: 12px;
-  max-width: 66px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: center;
-}
-
+/* --- SMART PEEKING ARROWS --- */
 .scroll-btn {
   position: absolute;
   top: 50%;
@@ -150,8 +58,64 @@
   cursor: pointer;
   z-index: 10;
   color: #000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  
+  /* Hidden State */
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.scroll-btn.left { left: -14px; }
-.scroll-btn.right { right: -14px; }
+/* Initial "Tucked Away" positions */
+.scroll-btn.left { left: -25px; }
+.scroll-btn.right { right: -25px; }
+
+/* Show and Slide in ONLY when wrapper is hovered AND arrow is needed */
+.stories-wrapper:hover .scroll-btn.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.stories-wrapper:hover .scroll-btn.left.is-visible {
+  left: -14px;
+}
+
+.stories-wrapper:hover .scroll-btn.right.is-visible {
+  right: -14px;
+}
+
+/* --- BASIC UI ELEMENTS --- */
+.story-avatar-wrapper { position: relative; width: 66px; height: 66px; }
+
+.plus-icon {
+  position: absolute; bottom: 0; right: 0;
+  background-color: #0095f6; color: #fff;
+  width: 20px; height: 20px;
+  border-radius: 50%; border: 2px solid #000;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: bold; z-index: 2;
+}
+
+.story-ring {
+  width: 66px; height: 66px; border-radius: 50%; padding: 2px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.story-ring.seen { background: #333; }
+
+.story-avatar {
+  width: 60px; height: 60px; border-radius: 50%;
+  border: 3px solid #000; object-fit: cover;
+}
+
+.story-username {
+  color: #e0e0e0; font-size: 12px;
+  max-width: 66px; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.story-item:hover .story-username {
+  color: #fff; font-weight: 600;
+}
