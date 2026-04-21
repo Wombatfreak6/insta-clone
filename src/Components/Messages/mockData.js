@@ -15,7 +15,12 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=shikhar",
     lastMessage: "Jatin sent an attachment.",
     timestamp: "8w",
-    messages: []
+    messages: [
+      { id: 1, sender: "other", text: "Hey! How's the project going?", timestamp: "10:30 AM" },
+      { id: 2, sender: "me", text: "It's going great, just working on the chat UI now.", timestamp: "10:32 AM" },
+      { id: 3, sender: "other", text: "Awesome! Let me know if you need any help with the backend.", timestamp: "10:33 AM" },
+      { id: 4, sender: "other", text: "I sent you some UI references as well.", timestamp: "10:33 AM" },
+    ]
   },
   {
     id: 2,
@@ -23,7 +28,11 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=insta1",
     lastMessage: "Tq so much 🙌🙌 Ashish",
     timestamp: "9w",
-    messages: []
+    messages: [
+      { id: 1, sender: "me", text: "Hey, thanks for reaching out!", timestamp: "Yesterday" },
+      { id: 2, sender: "other", text: "No problem! Loved your latest post.", timestamp: "Yesterday" },
+      { id: 3, sender: "other", text: "Tq so much 🙌🙌 Ashish", timestamp: "Yesterday" },
+    ]
   },
   {
     id: 3,
@@ -31,7 +40,11 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=naman",
     lastMessage: "मैसेज लाइक केला",
     timestamp: "9w",
-    messages: []
+    messages: [
+      { id: 1, sender: "other", text: "Kasa aahes?", timestamp: "2d ago" },
+      { id: 2, sender: "me", text: "Mast, tu sang.", timestamp: "2d ago" },
+      { id: 3, sender: "other", text: "मैसेज लाइक केला", timestamp: "2d ago" },
+    ]
   },
   {
     id: 4,
@@ -39,7 +52,10 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=ben",
     lastMessage: "Fit.Ben_ 🏋️ sent an attachment.",
     timestamp: "9w",
-    messages: []
+    messages: [
+      { id: 1, sender: "other", text: "Check out this workout routine!", timestamp: "1w ago" },
+      { id: 2, sender: "me", text: "Looks intense! I'll try it tomorrow.", timestamp: "1w ago" },
+    ]
   },
   {
     id: 5,
@@ -47,31 +63,10 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=mehek",
     lastMessage: "Thanku..",
     timestamp: "10w",
-    messages: []
-  },
-  {
-    id: 6,
-    name: "Instagram user",
-    avatar: "https://i.pravatar.cc/150?u=insta2",
-    lastMessage: "Instagram user sent an attachment.",
-    timestamp: "11w",
-    messages: []
-  },
-  {
-    id: 7,
-    name: "Dipesh Roy",
-    avatar: "https://i.pravatar.cc/150?u=dipesh",
-    lastMessage: "You sent an attachment.",
-    timestamp: "11w",
-    messages: []
-  },
-  {
-    id: 8,
-    name: "ARYA CHADHA",
-    avatar: "https://i.pravatar.cc/150?u=arya",
-    lastMessage: "See you soon!",
-    timestamp: "12w",
-    messages: []
+    messages: [
+      { id: 1, sender: "me", text: "Happy Birthday Achintya!", timestamp: "Oct 12" },
+      { id: 2, sender: "other", text: "Thanku..", timestamp: "Oct 12" },
+    ]
   }
 ];
 
