@@ -3,11 +3,12 @@ import React, { useState } from "react";
 import ChatList from "./ChatList";
 import ChatWindow from "./ChatWindow";
 import { MOCK_CHATS, MOCK_NOTES } from "./mockData";
-import { BiEdit, BiChevronDown, BiSearch } from "react-icons/bi";
+import { BiEdit, BiChevronDown, BiSearch, BiX } from "react-icons/bi";
 import "./MessagesPage.css";
 
 export default function MessagesPage() {
   const [activeChatId, setActiveChatId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const account = JSON.parse(localStorage.getItem("Account") || "{}");
   const username = account.username || "Hamza Ali Mazari";
@@ -17,24 +18,45 @@ export default function MessagesPage() {
   return (
     <div className="messages-container">
       <div className="chat-sidebar">
-        <div className="chat-sidebar__header">
+        <header className="chat-sidebar__header">
           <div className="sidebar-header__user">
-            <span className="username-text">{username}</span>
+            <h1 className="username-text">{username}</h1>
             <BiChevronDown className="chevron-icon" />
           </div>
-          <BiEdit className="edit-icon" />
-        </div>
+          <button className="new-message-btn" aria-label="New Message">
+            <BiEdit className="edit-icon" />
+          </button>
+        </header>
 
-        <div className="sidebar-search">
+        <section className="sidebar-search">
           <div className="search-bar">
             <BiSearch className="search-icon" />
-            <input type="text" placeholder="Search" className="search-input" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="search-input"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            {searchTerm && (
+              <BiX 
+                className="clear-search-icon" 
+                onClick={() => setSearchTerm("")} 
+              />
+            )}
           </div>
-        </div>
+        </section>
 
-        <div className="notes-container">
+        <section className="notes-container">
           <div className="notes-scroll">
-            {MOCK_NOTES.map((note) => (
+            <div className="note-item">
+              <div className="note-avatar-wrapper plus-note">
+                <img src="https://i.pravatar.cc/150?u=me" alt="Your note" className="note-avatar" />
+                <div className="plus-icon">+</div>
+              </div>
+              <span className="note-name">Your note</span>
+            </div>
+            {MOCK_NOTES.filter(n => n.id !== 'me').map((note) => (
               <div key={note.id} className="note-item">
                 <div className="note-avatar-wrapper">
                   <img src={note.avatar} alt={note.name} className="note-avatar" />
@@ -46,18 +68,24 @@ export default function MessagesPage() {
               </div>
             ))}
           </div>
-        </div>
+        </section>
 
-        <div className="messages-subheader">
-          <span className="active-tab">Messages</span>
-          <span className="inactive-tab">Requests</span>
-        </div>
+        <nav className="messages-subheader">
+          <div className="tab-item active">
+            <span>Messages</span>
+          </div>
+          <div className="tab-item">
+            <span>Requests</span>
+          </div>
+        </nav>
 
-        <ChatList
-          chats={MOCK_CHATS}
-          activeChatId={activeChatId}
-          onChatSelect={setActiveChatId}
-        />
+        <div className="chat-sidebar__list-container">
+          <ChatList
+            chats={MOCK_CHATS}
+            activeChatId={activeChatId}
+            onChatSelect={setActiveChatId}
+          />
+        </div>
       </div>
       <ChatWindow chat={activeChat} />
     </div>
