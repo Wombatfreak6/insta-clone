@@ -89,12 +89,8 @@ export default function MessagesPage() {
         </section>
 
         <nav className="messages-subheader">
-          <div className="tab-item active">
-            <span>Messages</span>
-          </div>
-          <div className="tab-item">
-            <span>Requests</span>
-          </div>
+          <h2 className="subheader-title">Messages</h2>
+          <button className="requests-link">Requests</button>
         </nav>
 
         <div className="chat-sidebar__list-container">
