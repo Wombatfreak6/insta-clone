@@ -7,13 +7,38 @@ import { BiEdit, BiChevronDown, BiSearch, BiX } from "react-icons/bi";
 import "./MessagesPage.css";
 
 export default function MessagesPage() {
+  const [chats, setChats] = useState(MOCK_CHATS);
   const [activeChatId, setActiveChatId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
   const account = JSON.parse(localStorage.getItem("Account") || "{}");
   const username = account.username || "Hamza Ali Mazari";
 
-  const activeChat = MOCK_CHATS.find((c) => c.id === activeChatId);
+  const activeChat = chats.find((c) => c.id === activeChatId);
+
+  const handleSendMessage = (chatId, text) => {
+    const newMessage = {
+      id: Date.now(),
+      sender: "me",
+      text: text,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    };
+
+    setChats(prevChats => {
+      const chatIndex = prevChats.findIndex(c => c.id === chatId);
+      if (chatIndex === -1) return prevChats;
+
+      const updatedChat = {
+        ...prevChats[chatIndex],
+        messages: [...prevChats[chatIndex].messages, newMessage],
+        lastMessage: text,
+        timestamp: "Just now"
+      };
+
+      const otherChats = prevChats.filter(c => c.id !== chatId);
+      return [updatedChat, ...otherChats];
+    });
+  };
 
   return (
     <div className="messages-container">
@@ -74,13 +99,16 @@ export default function MessagesPage() {
 
         <div className="chat-sidebar__list-container">
           <ChatList
-            chats={MOCK_CHATS}
+            chats={chats}
             activeChatId={activeChatId}
             onChatSelect={setActiveChatId}
           />
         </div>
       </div>
-      <ChatWindow chat={activeChat} />
+      <ChatWindow 
+        chat={activeChat} 
+        onSendMessage={handleSendMessage}
+      />
     </div>
   );
 }
