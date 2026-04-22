@@ -26,15 +26,16 @@ const NAV_LINKS = [
 ];
 
 export default function Sidebar({ activePage, onNavigate }) {
-  const [activeItem, setActiveItem] = useState(activePage || "home");
+  const currentActive = activePage || "home";
 
   function handleClick(id) {
-    setActiveItem(id);
     if (onNavigate) onNavigate(id);
   }
 
+  const isNarrow = currentActive === "messages";
+
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar ${isNarrow ? "sidebar--narrow" : ""}`}>
       <Logo />
       <nav className="sidebar-nav">
         {NAV_LINKS.map(({ id, label, icon }) => (
@@ -42,7 +43,7 @@ export default function Sidebar({ activePage, onNavigate }) {
             key={id}
             icon={icon}
             label={label}
-            active={activeItem === id || (id === "messages" && activePage === "messages")}
+            active={currentActive === id}
             onClick={() => handleClick(id)}
           />
         ))}
