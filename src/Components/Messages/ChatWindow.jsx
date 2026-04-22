@@ -9,12 +9,25 @@ import {
 import { RiMessengerLine } from "react-icons/ri";
 import { BsCheck2All, BsEmojiSmile } from "react-icons/bs";
 
-export default function ChatWindow({ chat }) {
+export default function ChatWindow({ chat, onSendMessage }) {
   const [inputText, setInputText] = useState("");
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleSend = () => {
+    if (inputText.trim()) {
+      onSendMessage(chat.id, inputText);
+      setInputText("");
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
   };
 
   useEffect(() => {
@@ -107,24 +120,30 @@ export default function ChatWindow({ chat }) {
           <button className="input-action-btn emoji-btn">
             <BsEmojiSmile />
           </button>
-          <input
-            type="text"
-            className="chat-input__field"
-            placeholder="Message..."
-            value={inputText}
-            onChange={(e) => setInputText(e.target.value)}
-          />
-          <div className="chat-input__actions">
-            {!inputText ? (
-              <>
-                <button className="input-action-btn"><AiOutlineAudio /></button>
-                <button className="input-action-btn"><AiOutlinePicture /></button>
-                <button className="input-action-btn"><AiOutlineHeart /></button>
-              </>
-            ) : (
-              <button className="input-send-btn">Send</button>
-            )}
-          </div>
+            <input
+              type="text"
+              className="chat-input__field"
+              placeholder="Message..."
+              value={inputText}
+              onChange={(e) => setInputText(e.target.value)}
+              onKeyDown={handleKeyPress}
+            />
+            <div className="chat-input__actions">
+              {!inputText ? (
+                <>
+                  <button className="input-action-btn"><AiOutlineAudio /></button>
+                  <button className="input-action-btn"><AiOutlinePicture /></button>
+                  <button className="input-action-btn"><AiOutlineHeart /></button>
+                </>
+              ) : (
+                <button 
+                  className="input-send-btn" 
+                  onClick={handleSend}
+                >
+                  Send
+                </button>
+              )}
+            </div>
         </div>
       </footer>
     </div>
