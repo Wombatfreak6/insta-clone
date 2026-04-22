@@ -484,6 +484,14 @@
   gap: 2px;
 }
 
+.group--other .group-bubbles {
+  align-items: flex-start;
+}
+
+.group--me .group-bubbles {
+  align-items: flex-end;
+}
+
 .message-bubble {
   padding: 8px 12px;
   font-size: 15px;

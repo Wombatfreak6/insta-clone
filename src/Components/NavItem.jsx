@@ -1,17 +1,15 @@
-
 import "./Sidebar.css";
 
-export default function NavItem({ icon: Icon, label, active, isCollapsed, onClick }) {
+export default function NavItem({ icon: Icon, label, active, onClick }) {
   return (
     <button
       className={`nav-item ${active ? "nav-item--active" : ""}`}
       onClick={onClick}
-      title={isCollapsed ? label : undefined}
     >
       <span className="nav-item__icon">
         <Icon />
       </span>
-      {!isCollapsed && <span className="nav-item__label">{label}</span>}
+      <span className="nav-item__label">{label}</span>
     </button>
   );
 }

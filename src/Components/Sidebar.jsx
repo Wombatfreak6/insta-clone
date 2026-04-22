@@ -25,7 +25,7 @@ const NAV_LINKS = [
   { id: "profile",       label: "Profile",       icon: RiAccountCircleLine },
 ];
 
-export default function Sidebar({ activePage, onNavigate, isCollapsed }) {
+export default function Sidebar({ activePage, onNavigate }) {
   const [activeItem, setActiveItem] = useState(activePage || "home");
 
   function handleClick(id) {
@@ -34,8 +34,8 @@ export default function Sidebar({ activePage, onNavigate, isCollapsed }) {
   }
 
   return (
-    <aside className={`sidebar ${isCollapsed ? "sidebar--collapsed" : ""}`}>
-      <Logo isCollapsed={isCollapsed} />
+    <aside className="sidebar">
+      <Logo />
       <nav className="sidebar-nav">
         {NAV_LINKS.map(({ id, label, icon }) => (
           <NavItem
@@ -44,11 +44,10 @@ export default function Sidebar({ activePage, onNavigate, isCollapsed }) {
             label={label}
             active={activeItem === id || (id === "messages" && activePage === "messages")}
             onClick={() => handleClick(id)}
-            isCollapsed={isCollapsed}
           />
         ))}
       </nav>
-      <BottomMenu isCollapsed={isCollapsed} />
+      <BottomMenu />
     </aside>
   );
 }

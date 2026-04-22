@@ -16,21 +16,12 @@ export default function App() {
     return <Auth onAuthSuccess={() => setAuthed(true)} />;
   }
 
-  const isMessagesPage = activePage === "messages";
-
   return (
-    <div className={`app-container ${isMessagesPage ? "layout--messages" : ""}`}>
-      <div
-        className="sidebar-wrapper"
-        style={{
-          width: isMessagesPage ? "var(--sidebar-width-collapsed)" : "var(--sidebar-width)",
-          transform: activePage === "search" ? "translateX(-100%)" : "translateX(0)"
-        }}
-      >
+    <div className="app-container">
+      <div className="sidebar-wrapper">
         <Sidebar 
           activePage={activePage} 
           onNavigate={setActivePage} 
-          isCollapsed={isMessagesPage} 
         />
       </div>
 
