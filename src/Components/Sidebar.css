@@ -1,9 +1,8 @@
-
 /* ---------- Design tokens ---------- */
 :root {
   --sidebar-bg: #000000;
-  --sidebar-width: 245px;
-  --sidebar-width-collapsed: 72px;
+  --sidebar-collapsed-width: 72px;
+  --sidebar-expanded-width: 250px;
   --sidebar-border: #262626;
 
   --text-primary: #f5f5f5;
@@ -13,7 +12,7 @@
   --item-active-bg: #262626;
   --item-radius: 8px;
 
-  --transition-speed: 0.2s;
+  --transition-speed: 0.3s;
   --icon-size: 26px;
 }
 
@@ -23,20 +22,19 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: var(--sidebar-width);
+  width: var(--sidebar-collapsed-width);
   background-color: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border);
   display: flex;
   flex-direction: column;
   padding: 12px 12px 20px;
-  z-index: 100;
-  transition: width var(--transition-speed) ease;
+  z-index: 1000;
   overflow: hidden;
+  transition: width var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Collapsed: icon-only mode (medium screens) */
-.sidebar--collapsed {
-  width: var(--sidebar-width-collapsed);
+.sidebar:hover {
+  width: var(--sidebar-expanded-width);
 }
 
 /* ---------- Logo ---------- */
@@ -44,6 +42,15 @@
   padding: 20px 12px 28px;
   display: flex;
   align-items: center;
+  height: 80px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: var(--text-primary);
+  display: block;
+  min-width: 28px;
+  margin-left: 2px;
 }
 
 .logo-text {
@@ -52,11 +59,16 @@
   color: var(--text-primary);
   letter-spacing: 0.5px;
   white-space: nowrap;
+  display: none;
+  padding-left: 8px;
 }
 
-.logo-icon {
-  font-size: 32px;
-  color: var(--text-primary);
+.sidebar:hover .logo-icon {
+  display: none;
+}
+
+.sidebar:hover .logo-text {
+  display: block;
 }
 
 /* ---------- Nav list ---------- */
@@ -80,8 +92,7 @@
   color: var(--text-primary);
   cursor: pointer;
   text-align: left;
-  transition: background-color var(--transition-speed) ease,
-              transform var(--transition-speed) ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
 }
 
@@ -107,43 +118,19 @@
   font-size: 15px;
   font-weight: 400;
   color: var(--text-primary);
-  transition: opacity var(--transition-speed) ease;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar:hover .nav-item__label {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease 0.1s;
 }
 
 /* ---------- Bottom section ---------- */
 .sidebar-bottom {
   border-top: 1px solid var(--sidebar-border);
   padding-top: 12px;
-}
-
-/* ---------- Responsive breakpoints ---------- */
-
-/* Medium screens (≤ 1263px): collapse to icons only */
-@media (max-width: 1263px) {
-  .sidebar {
-    width: var(--sidebar-width-collapsed);
-  }
-
-  .logo-text,
-  .nav-item__label {
-    display: none;
-  }
-
-  .sidebar-logo {
-    justify-content: center;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .nav-item {
-    justify-content: center;
-    padding: 12px 0;
-  }
-}
-
-/* Mobile (≤ 767px): hide sidebar entirely */
-@media (max-width: 767px) {
-  .sidebar {
-    display: none;
-  }
 }

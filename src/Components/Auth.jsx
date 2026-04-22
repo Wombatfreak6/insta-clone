@@ -6,16 +6,17 @@ function LoginForm({ onLogin }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const entered = e.target.user.value.trim();
-    const pass = e.target.pass.value;
-    const stored = JSON.parse(localStorage.getItem("Account"));
+    const usernameInput = e.target.user.value.trim();
+    const passwordInput = e.target.pass.value;
+    const storedAccount = JSON.parse(localStorage.getItem("Account"));
 
-    if (!stored) {
+    if (!storedAccount) {
       setError("No account found. Please sign up first.");
       return;
     }
 
-    if ((entered === stored.user || entered === stored.username) && pass === stored.pass) {
+    const { user, username, pass } = storedAccount;
+    if ((usernameInput === user || usernameInput === username) && passwordInput === pass) {
       onLogin();
     } else {
       setError("Incorrect username or password.");
@@ -31,7 +32,7 @@ function LoginForm({ onLogin }) {
         <button className="auth-btn" type="submit">Log in</button>
       </form>
       <div className="auth-divider"><span /><p>OR</p><span /></div>
-      <button className="auth-fb-btn">Log in with Facebook</button>
+      <button className="auth-fb-btn" type="button">Log in with Facebook</button>
       <p className="auth-forgot">Forgot password?</p>
     </>
   );
@@ -52,6 +53,7 @@ function SignupForm({ switchToLogin }) {
       setError("All fields are required.");
       return;
     }
+    
     if (password.length < 8) {
       setError("Password must be at least 8 characters.");
       return;
@@ -65,7 +67,7 @@ function SignupForm({ switchToLogin }) {
   return (
     <>
       <p className="auth-subtitle">Sign up to see photos and videos from your friends.</p>
-      <button className="auth-fb-btn">Sign up with Facebook</button>
+      <button className="auth-fb-btn" type="button">Sign up with Facebook</button>
       <div className="auth-divider"><span /><p>OR</p><span /></div>
       <form className="auth-form" onSubmit={handleSubmit}>
         <input type="email" name="email" placeholder="Mobile number or email" required />
@@ -90,16 +92,18 @@ export default function Auth({ onAuthSuccess }) {
     <div className="auth-page">
       <div className="auth-card">
         <h1 className="auth-logo">Instagram</h1>
-        {mode === "login"
-          ? <LoginForm onLogin={onAuthSuccess} />
-          : <SignupForm switchToLogin={() => setMode("login")} />
-        }
+        {mode === "login" ? (
+          <LoginForm onLogin={onAuthSuccess} />
+        ) : (
+          <SignupForm switchToLogin={() => setMode("login")} />
+        )}
       </div>
       <div className="auth-switch-card">
-        {mode === "login"
-          ? <p>Don&apos;t have an account? <button onClick={() => setMode("signup")}>Sign up</button></p>
-          : <p>Have an account? <button onClick={() => setMode("login")}>Log in</button></p>
-        }
+        {mode === "login" ? (
+          <p>Don&apos;t have an account? <button onClick={() => setMode("signup")}>Sign up</button></p>
+        ) : (
+          <p>Have an account? <button onClick={() => setMode("login")}>Log in</button></p>
+        )}
       </div>
     </div>
   );
