@@ -27,28 +27,49 @@
   margin-left: 10px;
   outline: none;
   width: 100%;
+  font-size: 14px;
+}
+
+.explore-search-bar input::placeholder {
+  color: #a8a8a8;
 }
 
 .explore-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 290px;
-  gap: 4px;
+  gap: 3px;
 }
 
 .explore-item {
   position: relative;
   cursor: pointer;
+  overflow: hidden;
 }
 
-.explore-item img {
+.explore-item.tall {
+  grid-row: span 2;
+}
+
+.explore-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+  opacity: 0;
+  animation: fadeIn 0.4s ease forwards;
 }
 
-.explore-item.wide {
-  grid-row: span 2; /* 2 rows cover karega */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.post-type-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
 }
 
 .explore-overlay {
@@ -57,7 +78,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.35);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,8 +93,9 @@
 .overlay-content {
   color: white;
   display: flex;
-  gap: 20px;
-  font-weight: 600;
+  gap: 24px;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .overlay-content span {
