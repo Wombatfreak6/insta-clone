@@ -1,8 +1,9 @@
+/* --- CONTAINER & WRAPPER --- */
 .stories-wrapper {
   position: relative;
   width: 100%;
   max-width: 470px;
-  margin-bottom: 24px;
+  margin: 0 auto 24px;
 }
 
 .stories-bar {
@@ -16,9 +17,11 @@
   white-space: nowrap;
 }
 
-.stories-bar::-webkit-scrollbar { display: none; }
+.stories-bar::-webkit-scrollbar {
+  display: none;
+}
 
-/* --- PREMIUM SPOTLIGHT HOVER --- */
+/* --- STORY ITEM & HOVER EFFECTS --- */
 .story-item {
   display: flex;
   flex-direction: column;
@@ -26,17 +29,72 @@
   gap: 6px;
   cursor: pointer;
   flex-shrink: 0;
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.story-item:hover { transform: translateY(-6px); }
+.story-item:hover {
+  transform: translateY(-6px);
+}
 
 .stories-bar:hover .story-item:not(:hover) {
   opacity: 0.5;
   filter: grayscale(0.3);
 }
 
-/* --- SMART PEEKING ARROWS --- */
+/* --- RING & AVATAR STYLES --- */
+.story-ring {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  padding: 2px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.story-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 3px solid #000;
+  object-fit: cover;
+}
+
+/* --- YOUR STORY SPECIFIC (Blue Plus Icon) --- */
+.story-avatar-wrapper {
+  position: relative;
+  width: 66px;
+  height: 66px;
+}
+
+.plus-icon {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  background-color: #0095f6;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.story-username {
+  color: #e0e0e0;
+  font-size: 11px;
+  max-width: 66px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+/* --- SMART SLIDING ARROWS (Home Bar) --- */
 .scroll-btn {
   position: absolute;
   top: 50%;
@@ -46,25 +104,21 @@
   border-radius: 50%;
   width: 28px;
   height: 28px;
-  font-size: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 10;
   color: #000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  
-  /* Initial Hidden State */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
 }
 
 .scroll-btn.left { left: -25px; }
 .scroll-btn.right { right: -25px; }
 
-/* Slide-in on Hover */
 .stories-wrapper:hover .scroll-btn.is-visible {
   opacity: 1;
   pointer-events: auto;
@@ -73,59 +127,223 @@
 .stories-wrapper:hover .scroll-btn.left.is-visible { left: -14px; }
 .stories-wrapper:hover .scroll-btn.right.is-visible { right: -14px; }
 
-/* --- RING & AVATAR --- */
-.story-ring {
-  width: 66px; height: 66px; border-radius: 50%; padding: 2px;
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  display: flex; align-items: center; justify-content: center;
-}
-
-.story-avatar {
-  width: 60px; height: 60px; border-radius: 50%;
-  border: 3px solid #000; object-fit: cover;
-}
-
-.story-username { color: #e0e0e0; font-size: 12px; max-width: 66px; overflow: hidden; text-overflow: ellipsis; }
-
-/* --- RECTANGLE STORY VIEWER --- */
+/* --- STORY VIEWER MODAL --- */
 .story-viewer-overlay {
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.95);
-  display: flex; justify-content: center; align-items: center; z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5000;
 }
 
 .story-viewer-content {
-  position: relative; width: 100%; max-width: 400px; height: 85vh;
-  background: #000; border-radius: 12px; overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 85vh;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  animation: storyAppear 0.4s cubic-bezier(0.1, 0.7, 1.0, 0.1);
 }
 
+@keyframes storyAppear {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* --- PROGRESS BAR SYSTEM --- */
 .viewer-progress-container {
-  position: absolute; top: 10px; left: 10px; right: 10px;
-  display: flex; gap: 4px; z-index: 20;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+  z-index: 30;
 }
 
-.progress-segment { flex: 1; height: 2px; background: rgba(255, 255, 255, 0.3); border-radius: 2px; }
-.progress-fill { height: 100%; background: #fff; }
+.progress-segment {
+  flex: 1;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  overflow: hidden;
+}
 
+.progress-fill {
+  height: 100%;
+  background: #fff;
+}
+
+/* --- VIEWER HEADER --- */
 .viewer-header {
-  position: absolute; top: 20px; left: 15px; right: 15px;
-  display: flex; justify-content: space-between; align-items: center; z-index: 20;
+  position: absolute;
+  top: 20px;
+  left: 15px;
+  right: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 30;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+  padding: 10px 5px 30px;
 }
 
-.viewer-header-left { display: flex; align-items: center; gap: 8px; }
-.mini-avatar { width: 32px; height: 32px; border-radius: 50%; }
-.viewer-user { color: #fff; font-weight: 600; }
-.viewer-time { color: #999; font-size: 14px; }
-.ctrl-btn { background: none; border: none; color: #fff; cursor: pointer; }
+.viewer-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-.viewer-main-img { width: 100%; height: 100%; object-fit: cover; }
+.mini-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+}
 
-.viewer-footer { position: absolute; bottom: 20px; right: 20px; }
-.share-icon-btn { background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; }
+.viewer-user {
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.viewer-time {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+}
+
+.viewer-header-right {
+  display: flex;
+  gap: 15px;
+}
+
+.ctrl-icon {
+  color: white;
+  cursor: pointer;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* --- MAIN STORY CONTENT --- */
+.viewer-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: storyFade 0.3s ease-in;
+}
+
+@keyframes storyFade {
+  from { opacity: 0.6; }
+  to { opacity: 1; }
+}
+
+/* --- FOOTER & NAV --- */
+.viewer-footer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 30;
+}
+
+.share-icon {
+  color: white;
+  cursor: pointer;
+  transform: rotate(-15deg);
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
 
 .viewer-nav-btn {
-  background: rgba(255, 255, 255, 0.1); color: #fff; border: none;
-  width: 45px; height: 45px; border-radius: 50%; font-size: 30px; cursor: pointer; margin: 0 30px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 20px;
+  transition: background 0.2s;
 }
 
-.viewer-close { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; z-index: 100; }
+.viewer-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.viewer-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  cursor: pointer;
+  z-index: 100;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+@media (max-width: 768px) {
+  .viewer-nav-btn {
+    display: none;
+  }
+  .stories-wrapper {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+/* ... (Baaki saara CSS same rahega, bas ye niche wala part update kar do) ... */
+
+.story-viewer-content {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 85vh;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+  /* Ye animation ab har click par chalegi */
+  animation: rectangleSlide 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+@keyframes rectangleSlide {
+  0% {
+    opacity: 0.5;
+    transform: translateX(100px) scale(0.9); /* Right se slide hokar aayega */
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.viewer-nav-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 20px;
+  z-index: 10;
+}
+
+/* Share icon tilt fix */
+.share-icon {
+  color: white;
+  cursor: pointer;
+  transform: rotate(-15deg);
+  transition: transform 0.2s;
+}
+.share-icon:hover {
+  transform: rotate(0deg) scale(1.1);
+}
