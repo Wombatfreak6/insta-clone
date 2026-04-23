@@ -1,5 +1,5 @@
 import React from 'react';
-import { Search, Heart, MessageCircle } from 'lucide-react';
+import { Heart, MessageCircle } from 'lucide-react';
 import './ExplorePage.css';
 
 const exploreData = [
@@ -20,13 +20,7 @@ const exploreData = [
 const ExplorePage = () => {
   return (
     <div className="explore-container">
-      <div className="explore-search-wrapper">
-        <div className="explore-search-bar">
-          <Search size={16} className="search-icon" />
-          <input type="text" placeholder="Search" />
-        </div>
-      </div>
-
+      {/* Search bar removed as requested */}
       <div className="explore-grid">
         {exploreData.map((item) => (
           <div key={item.id} className={`explore-item ${item.isTall ? 'tall' : ''}`}>

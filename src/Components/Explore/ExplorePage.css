@@ -1,37 +1,7 @@
 .explore-container {
   max-width: 935px;
   margin: 0 auto;
-  padding: 24px 20px;
-}
-
-.explore-search-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 24px;
-}
-
-.explore-search-bar {
-  background: #262626;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  padding: 8px 16px;
-  width: 100%;
-  max-width: 350px;
-}
-
-.explore-search-bar input {
-  background: transparent;
-  border: none;
-  color: white;
-  margin-left: 10px;
-  outline: none;
-  width: 100%;
-  font-size: 14px;
-}
-
-.explore-search-bar input::placeholder {
-  color: #a8a8a8;
+  padding: 10px 20px; /* Thoda gap top se */
 }
 
 .explore-grid {
