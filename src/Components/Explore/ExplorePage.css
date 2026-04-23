@@ -1,14 +1,15 @@
 .explore-container {
   max-width: 935px;
   margin: 0 auto;
-  padding: 10px 20px; /* Thoda gap top se */
+  padding: 20px;
+  position: relative;
 }
 
 .explore-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 290px;
-  gap: 3px;
+  gap: 4px;
 }
 
 .explore-item {
@@ -17,28 +18,18 @@
   overflow: hidden;
 }
 
-.explore-item.tall {
-  grid-row: span 2;
-}
+.explore-item.tall { grid-row: span 2; }
 
 .explore-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
-  opacity: 0;
-  animation: fadeIn 0.4s ease forwards;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .post-type-icon {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 10px;
+  right: 10px;
   z-index: 2;
 }
 
@@ -48,7 +39,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,16 +47,13 @@
   transition: opacity 0.2s ease;
 }
 
-.explore-item:hover .explore-overlay {
-  opacity: 1;
-}
+.explore-item:hover .explore-overlay { opacity: 1; }
 
 .overlay-content {
   color: white;
   display: flex;
-  gap: 24px;
-  font-weight: 700;
-  font-size: 16px;
+  gap: 20px;
+  font-weight: 600;
 }
 
 .overlay-content span {
@@ -73,3 +61,60 @@
   align-items: center;
   gap: 6px;
 }
+
+/* --- Floating DM Bar (Final Layout) --- */
+.floating-dm-bar {
+  position: fixed;
+  bottom: 20px;         /* <-- Neeche se thoda upar kar diya */
+  right: 20px;          /* <-- Sidebar aur corner se balance gap */
+  width: 280px;
+  height: 48px;
+  background-color: #262626; 
+  border: 1px solid #363636;
+  
+  /* Ab chaaro corners round kar do kyunki ye floating hai */
+  border-radius: 12px;  
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  cursor: pointer;
+  z-index: 1000;
+  
+  /* Thodi shadow badha do taaki 'Floating' effect achha aaye */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s ease;
+}
+
+.floating-dm-bar:hover {
+  background-color: #313131;
+  transform: translateY(-2px); /* Hover par halka sa aur upar uthega */
+}
+
+.dm-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dm-text {
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.stacked-profiles {
+  display: flex;
+  align-items: center;
+}
+
+.stack-img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #262626;
+  margin-left: -10px;
+}
+
+.stack-img:first-child { margin-left: 0; }

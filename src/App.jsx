@@ -37,7 +37,7 @@ export default function App() {
         ) : activePage === "messages" ? (
           <MessagesPage />
         ) : activePage === "explore" ? (
-          <ExplorePage />
+          <ExplorePage onNavigate={setActivePage} />
         ) : (
           <HomePage />
         )}
