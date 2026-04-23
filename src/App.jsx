@@ -7,6 +7,7 @@ import HomePage from "./Components/Home/HomePage";
 import ProfilePage from "./Components/Profile/ProfilePage";
 import SearchPage from "./Components/Search/SearchPage";
 import MessagesPage from "./Components/Messages/MessagesPage";
+import ExplorePage from "./Components/Explore/ExplorePage";
 
 export default function App() {
   const [authed, setAuthed] = useState(() => !!localStorage.getItem("Account"));
@@ -35,6 +36,8 @@ export default function App() {
           <ProfilePage />
         ) : activePage === "messages" ? (
           <MessagesPage />
+        ) : activePage === "explore" ? (
+          <ExplorePage />
         ) : (
           <HomePage />
         )}
