@@ -215,35 +215,16 @@
   max-width: 630px;
 }
 
-.home-right {
-  display: none;
-}
-
 @media (min-width: 1160px) {
   .home-page {
-    gap: 64px;
     justify-content: center;
     padding-left: 0;
     padding-right: 0;
   }
 
   .home-center {
-    margin-right: 0;
     width: 100%;
     max-width: 630px;
-    align-items: flex-end; /* Align feed content to the right of its container to be closer to suggestions */
-  }
-
-  .home-right {
-    display: block;
-    width: 319px;
-    position: relative;
-    margin-top: 16px;
-  }
-}
-
-@media (min-width: 1264px) {
-  .home-center {
-    align-items: center; /* Center feed content when screen is very wide */
+    align-items: center;
   }
 }
