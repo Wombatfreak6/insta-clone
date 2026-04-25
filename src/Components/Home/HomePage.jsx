@@ -1,5 +1,6 @@
 import Feed from "./Feed";
 import StoriesBar from "./StoriesBar";
+import SuggestionBar from "./SuggestionBar";
 import "./HomePage.css";
 
 export default function HomePage() {
@@ -9,6 +10,7 @@ export default function HomePage() {
         <StoriesBar />
         <Feed />
       </div>
+      <SuggestionBar />
     </div>
   );
 }
