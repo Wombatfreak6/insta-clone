@@ -8,6 +8,7 @@ import ProfilePage from "./Components/Profile/ProfilePage";
 import SearchPage from "./Components/Search/SearchPage";
 import MessagesPage from "./Components/Messages/MessagesPage";
 import ExplorePage from "./Components/Explore/ExplorePage";
+import NotificationsPage from "./Components/Notifications/NotificationsPage";
 
 export default function App() {
   const [authed, setAuthed] = useState(() => !!localStorage.getItem("Account"));
@@ -28,6 +29,11 @@ export default function App() {
 
       <SearchPage
         isOpen={activePage === "search"}
+        onClose={() => setActivePage("home")}
+      />
+
+      <NotificationsPage
+        isOpen={activePage === "notifications"}
         onClose={() => setActivePage("home")}
       />
 
