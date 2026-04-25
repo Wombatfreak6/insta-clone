@@ -1,0 +1,160 @@
+.right-panel {
+  width: 319px;
+  padding-top: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.rp-user-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rp-user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rp-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f5f5f5;
+  line-height: 1.2;
+}
+
+.rp-fullname {
+  font-size: 14px;
+  color: #a8a8a8;
+}
+
+.rp-switch-btn {
+  background: none;
+  border: none;
+  color: #0095f6;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rp-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.rp-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #a8a8a8;
+}
+
+.rp-see-all {
+  background: none;
+  border: none;
+  color: #f5f5f5;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.rp-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rp-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rp-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.rp-item-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.rp-item-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+
+.rp-item-subtext {
+  font-size: 12px;
+  color: #a8a8a8;
+}
+
+.rp-follow-btn {
+  background: none;
+  border: none;
+  color: #0095f6;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rp-follow-btn.following {
+  color: #f5f5f5;
+}
+
+.rp-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.rp-footer-links {
+  font-size: 12px;
+  color: #737373;
+  line-height: 1.5;
+}
+
+.rp-footer-links span {
+  cursor: pointer;
+}
+
+.rp-footer-links span:hover {
+  text-decoration: underline;
+}
+
+.rp-footer-copyright {
+  font-size: 12px;
+  color: #737373;
+}
+
+@media (max-width: 1159px) {
+  .right-panel {
+    display: none;
+  }
+}

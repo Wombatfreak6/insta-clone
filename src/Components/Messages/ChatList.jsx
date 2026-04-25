@@ -15,8 +15,8 @@ export default function ChatList({ chats, activeChatId, onChatSelect }) {
             {chat.isOnline && <div className="online-indicator" />}
           </div>
           <div className="chat-item__info">
-            <div className="chat-item__name">{chat.name}</div>
-            <div className="chat-item__meta">
+            <div className={`chat-item__name ${chat.unreadCount > 0 ? "unread-text" : ""}`}>{chat.name}</div>
+            <div className={`chat-item__meta ${chat.unreadCount > 0 ? "unread-meta" : ""}`}>
               <span className="chat-item__last-msg">{chat.lastMessage}</span>
               <span className="chat-item__dot">•</span>
               <span className="chat-item__time">{chat.timestamp}</span>

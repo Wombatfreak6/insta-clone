@@ -16,6 +16,7 @@ const posts = [
     likes: 8870,
     caption: "Golden hour never disappoints. 🌅",
     time: "4h",
+    verified: true,
   },
   {
     id: 3,
@@ -25,6 +26,7 @@ const posts = [
     likes: 1504,
     caption: "Every city has its own heartbeat. 🏙️",
     time: "6h",
+    verified: true,
   },
   {
     id: 4,

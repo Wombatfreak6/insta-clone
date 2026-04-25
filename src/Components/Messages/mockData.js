@@ -1,5 +1,3 @@
-
-
 export const MOCK_NOTES = [
   { id: 'me', name: "Your note", avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d", note: "What's new?" },
   { id: 1, name: "Chenna Mahith", avatar: "https://i.pravatar.cc/150?u=siddhant", note: "\"never look so desperate to be friends wi..." },
@@ -15,6 +13,7 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=shikhar",
     lastMessage: "Jatin sent an attachment.",
     timestamp: "8w",
+    unreadCount: 1,
     messages: [
       { id: 1, sender: "other", text: "Hey! How's the project going?", timestamp: "10:30 AM" },
       { id: 2, sender: "me", text: "It's going great, just working on the chat UI now.", timestamp: "10:32 AM" },
@@ -28,6 +27,7 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=insta1",
     lastMessage: "Tq so much 🙌🙌 Ashish",
     timestamp: "9w",
+    unreadCount: 1,
     messages: [
       { id: 1, sender: "me", text: "Hey, thanks for reaching out!", timestamp: "Yesterday" },
       { id: 2, sender: "other", text: "No problem! Loved your latest post.", timestamp: "Yesterday" },
@@ -40,6 +40,7 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=naman",
     lastMessage: "मैसेज लाइक केला",
     timestamp: "9w",
+    unreadCount: 1,
     messages: [
       { id: 1, sender: "other", text: "Kasa aahes?", timestamp: "2d ago" },
       { id: 2, sender: "me", text: "Mast, tu sang.", timestamp: "2d ago" },
@@ -52,6 +53,7 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=ben",
     lastMessage: "Fit.Ben_ 🏋️ sent an attachment.",
     timestamp: "9w",
+    unreadCount: 0,
     messages: [
       { id: 1, sender: "other", text: "Check out this workout routine!", timestamp: "1w ago" },
       { id: 2, sender: "me", text: "Looks intense! I'll try it tomorrow.", timestamp: "1w ago" },
@@ -63,10 +65,10 @@ export const MOCK_CHATS = [
     avatar: "https://i.pravatar.cc/150?u=mehek",
     lastMessage: "Thanku..",
     timestamp: "10w",
+    unreadCount: 0,
     messages: [
       { id: 1, sender: "me", text: "Happy Birthday Achintya!", timestamp: "Oct 12" },
       { id: 2, sender: "other", text: "Thanku..", timestamp: "Oct 12" },
     ]
   }
 ];
-
