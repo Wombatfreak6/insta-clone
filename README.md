@@ -1,4 +1,4 @@
-# 📸 Instagram Clone - React UI
+# Instagram Clone - React UI
 
 A high-fidelity Instagram UI clone built with **React** and **Vanilla CSS**. This project recreates the modern Instagram desktop experience with a focus on premium aesthetics, smooth transitions, and core social features.
 
@@ -6,37 +6,37 @@ A high-fidelity Instagram UI clone built with **React** and **Vanilla CSS**. Thi
 
 ---
 
-## ✨ Features
+## Features
 
-### 🏠 Home Feed
+### Home Feed
 - **Stories Bar**: Interactive stories carousel with smooth scrolling.
 - **Post Feed**: High-quality post cards with likes, captions, and time stamps.
 - **Suggestion Bar**: Recommended users to follow, matching the Instagram sidebar layout.
 
-### 🔔 Notifications (New!)
+### Notifications (New!)
 - **Slide-out Panel**: A smooth, animated panel showing recent activity.
 - **Categorized Feed**: Activity grouped by "Today", "This Week", and "Earlier".
 - **Interaction Types**: Supports likes, follows (with requested/following states), and comments.
 
-### 💬 Messaging
+### Messaging
 - **Modern Chat Interface**: Full messaging experience with user list and active chat windows.
 - **Real-time Feel**: Responsive input and message history display.
 
-### 🔍 Search & Explore
+### Search & Explore
 - **Search Panel**: Instant slide-out search with recent searches and user filtering.
 - **Explore Grid**: Responsive grid of trending posts and media.
 
-### 👤 Profile
+### Profile
 - **User Stats**: Display of posts, followers, and following counts.
 - **Post Grid**: Classic Instagram grid view for user uploads.
 
-### 🔐 Authentication
+### Authentication
 - **Simulated Login/Signup**: Beautifully styled auth pages with local state persistence.
 - **Protected Routes**: Navigation is restricted until authentication is successful.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: [React](https://reactjs.org/) (Vite)
 - **Styling**: Vanilla CSS (CSS Modules approach for organization)
@@ -45,7 +45,7 @@ A high-fidelity Instagram UI clone built with **React** and **Vanilla CSS**. Thi
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 src/
@@ -65,7 +65,7 @@ src/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v16+)
@@ -91,17 +91,3 @@ Start the development server:
 npm run dev
 ```
 Open [http://localhost:5173](http://localhost:5173) in your browser.
-
----
-
-## 🎨 Design Philosophy
-This project prioritizes **visual excellence**. It uses a strict dark-mode palette (`#000000`, `#262626`, `#fafafa`) and follows Instagram's spacing and typography patterns to ensure a "premium" feel. Transitions are handled with `cubic-bezier` curves for that signature smooth app experience.
-
----
-
-## 📄 License
-This project is for educational purposes only.
-
----
-
-*Built with ❤️ by [Your Name/Username]*
