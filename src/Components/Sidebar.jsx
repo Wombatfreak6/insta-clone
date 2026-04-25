@@ -42,7 +42,7 @@ export default function Sidebar({ activePage, onNavigate }) {
     if (onNavigate) onNavigate(id);
   }
 
-  const isNarrow = currentActive === "messages";
+  const isNarrow = currentActive === "messages" || currentActive === "search" || currentActive === "notifications";
 
   return (
     <aside className={`sidebar ${isNarrow ? "sidebar--narrow" : ""}`}>
